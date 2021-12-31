@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <style>
+            h1{
+                font-style:italic;
+                font-weight:bold;
+                text-align:center;
+                color:#b03060;
+            }
+            table{
+                float:left;
+                width:35%;
+                border:5px solid;
+                border-width:30%;
+                padding:10px;
+            }
+            #submit{
+                float:left;
+                width:45%;
+                margin-left:45%;
+            }
+            div{
+                text-align:center;
+                font-weight:bold;
+            }
+            #result{
+                font-style:italic;
+                color:#FF0000;
+                font-size:40px;
+            }
+            #discount{
+                font-size:25px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>DISCOUNT PRICE</h1>
+        <form onsubmit="return discount()">
+            <table rules="all">
+                <tr>
+                    <td>Product Name</td>
+                    <td><input type="text" name="name" pattern="[a-zA-Z\s]" required></td>
+                </tr>
+                <tr>
+                    <td>Product Price</td>
+                    <td><input type="number" name="price" min="15001" id="price" required></td>
+                </tr>
+                <tr>
+                    <td>Season</td>
+                    <td><select name="season" id="season">
+                        <option value="summer">SUMMER SALE</option>
+                        <option value="newyear">NEW YEAR SALE</option>
+                        <option value="clearance">CLEARANCE SALE</option>
+                    </select></td>
+                </tr>
+            </table><br>
+            <input type="submit" value="GET DISCOUNT PRICE" id="submit" name="submit"><br>
+        </form>
+        <div id="discount"></div>
+        <div id="result"></div>
+        <script>
+            function discount()
+            {
+            var x=document.getElementById("price").value;
+            var y=document.getElementById("season").value;
+            var z;
+            if(y=="summer")
+            {
+                document.getElementById("discount").innerHTML="The discount is 10%"
+                z=(x-(x*.1));
+            }
+            else if(y=="newyear")
+            {
+                document.getElementById("discount").innerHTML="The discount is 5%"
+                z=(x-(x*.05));
+                
+            }
+            else if(y=="clearance"){
+                document.getElementById("discount").innerHTML="The discount is 15%"
+                z=(x-(x*0.15));
+            }
+            
+                  document.getElementById("result").innerHTML="The discounted price :Rs "+z;
+                return false;
+            }   
+        </script>
+    </body>
+</html>
